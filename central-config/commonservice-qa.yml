@@ -1,0 +1,11 @@
+common:
+    sms:
+        appId: 10070
+        appKey: b1cbc93553
+        smsUrl: http://sms.liulianggo.com/sms.php
+
+    sinaUrl:
+        appKey: 4147663528
+        secret: fb845585da16ddd11ece8a505e6a7aa8fc3adf22
+        tokenValidityInSeconds: 2592000
+        loginUrl: http://192.168.0.203:9095/account/jwtLogin

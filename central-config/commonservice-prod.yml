@@ -1,0 +1,26 @@
+eureka:
+    instance:
+        prefer-ip-address: true
+        ip-address: 10.139.100.228
+        leaseRenewalIntervalInSeconds: 10
+        leaseExpirationDurationInSeconds: 10
+    client:
+        enabled: true
+        healthcheck:
+            enabled: true
+        registerWithEureka: true
+        fetchRegistry: true
+        serviceUrl:
+            defaultZone: http://admin:admin@10.139.100.228:18761/eureka/
+
+common:
+    sms:
+        appId: 10070
+        appKey: b1cbc93553
+        smsUrl: http://sms.liulianggo.com/sms.php
+
+    sinaUrl:
+        appKey: 4147663528
+        secret: fb845585da16ddd11ece8a505e6a7aa8fc3adf22
+        tokenValidityInSeconds: 2592000
+        loginUrl: https://s.tenbent.com/account/jwtLogin

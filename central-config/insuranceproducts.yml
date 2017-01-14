@@ -1,0 +1,28 @@
+eureka:
+    instance:
+        appname: insuranceproducts
+        instanceId: insuranceproducts:${spring.application.instance_id:${random.value}}
+        statusPageUrlPath: ${management.context-path}/info
+        healthCheckUrlPath: ${management.context-path}/health
+
+spring:
+    application:
+        name: insuranceproducts
+    data:
+        mongodb:
+            database: tenbent-product
+
+tenbent:
+    swagger:
+        title: 腾保保险产品和保险公司服务
+        description: 腾保保险产品和保险公司服务 API 文档
+        version: 1.1.0
+        termsOfServiceUrl:
+        contactName:
+        contactUrl:
+        contactEmail:
+        license:
+        licenseUrl:
+
+server:
+    port: 19081

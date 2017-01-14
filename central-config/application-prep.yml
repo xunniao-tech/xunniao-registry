@@ -1,0 +1,86 @@
+# ===================================================================
+# Spring Boot configuration for the "dev" profile.
+#
+# This configuration overrides the application.yml file.
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spsing.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+eureka:
+    instance:
+        prefer-ip-address: true
+        leaseRenewalIntervalInSeconds: 10
+        leaseExpirationDurationInSeconds: 10
+    client:
+        enabled: true
+        healthcheck:
+            enabled: true
+        registerWithEureka: true
+        fetchRegistry: true
+        serviceUrl:
+            defaultZone: http://admin:admin@10.139.96.175:18761/eureka/
+
+spring:
+    profiles:
+        active: prep
+        include: swagger
+    devtools:
+        restart:
+            enabled: true
+        livereload:
+            enabled: false # we use gulp + BrowserSync for livereload
+    jackson:
+        serialization.indent_output: true
+    data:
+        mongodb:
+            uri: mongodb://10.139.96.175:27017
+        elasticsearch:
+              cluster-name: elasticsearch
+              cluster-nodes: 10.139.96.175:9300
+    redis:
+        host: 10.139.96.175
+        port: 6379
+    mail:
+        host: localhost
+        port: 25
+        username:
+        password:
+    messages:
+        cache-seconds: 1
+    thymeleaf:
+        cache: false
+
+# ===================================================================
+# tenbent specific properties
+# ===================================================================
+
+tenbent:
+    mail: # specific JHipster mail property, for standard properties see MailProperties
+        from: tenbentApp@10.139.96.175
+        baseUrl: http://10.139.96.175:8080
+    metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
+        jmx.enabled: false
+        graphite:
+            enabled: false
+            host: 10.139.96.175
+            port: 2003
+            prefix: tenbentApp
+        prometheus:
+            enabled: false
+            endpoint: /prometheusMetrics
+        logs: # Reports Dropwizard metrics in the logs
+            enabled: false
+            reportFrequency: 60 # in seconds
+    logging:
+        logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
+            enabled: true
+            host: 10.139.96.175
+            port: 5000
+            queueSize: 512
+        spectator-metrics: # Reports Spectator Circuit Breaker metrics in the logs
+            enabled: false
+            # edit spring.metrics.export.delay-millis to set report frequency

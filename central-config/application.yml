@@ -1,0 +1,55 @@
+
+ribbon:
+    eureka:
+        enabled: true
+management:
+    context-path: /management
+    health:
+        mail:
+            enabled: false # When using the MailService, configure an SMTP server and set this to true
+spring:
+    jackson:
+        serialization.write_dates_as_timestamps: false
+    messages:
+        basename: i18n/messages
+    mvc:
+        favicon:
+            enabled: false
+    thymeleaf:
+        mode: XHTML
+
+security:
+    basic:
+        enabled: false
+
+server:
+    session:
+        cookie:
+            http-only: true
+
+# To disable Hystrix in Feign
+feign:
+  hystrix:
+    enabled: false
+
+# ===================================================================
+# JHipster specific properties
+# ===================================================================
+
+tenbent:
+    security:
+        client-authorization:
+            accessTokenUri: http://tenbentoauth2/oauth/token
+            tokenServiceId: tenbentoauth2
+            clientId: internal
+            clientSecret: internal
+    async:
+        corePoolSize: 2
+        maxPoolSize: 50
+        queueCapacity: 10000
+    mail:
+        from: admin@tenbent.com
+    ribbon:
+        # comma separated list of profiles to show a ribbon on the GUI
+        displayOnActiveProfiles: dev
+

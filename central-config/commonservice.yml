@@ -1,0 +1,28 @@
+eureka:
+    instance:
+        appname: commonservice
+        instanceId: commonservice:${spring.application.instance_id:${random.value}}
+        statusPageUrlPath: ${management.context-path}/info
+        healthCheckUrlPath: ${management.context-path}/health
+
+spring:
+    application:
+        name: commonservice
+    data:
+        mongodb:
+            database: tenbent-common
+
+tenbent:
+    swagger:
+        title: tenbent commonservice API
+        description: 腾保公共组件 API 文档
+        version: 1.1.0
+        termsOfServiceUrl:
+        contactName:
+        contactUrl:
+        contactEmail:
+        license:
+        licenseUrl:
+
+server:
+    port: 19085
